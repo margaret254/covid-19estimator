@@ -1,4 +1,4 @@
-
+import math
 def estimator(data):
       currentlyInfectedImpact = int(data['reportedCases'] * 10)
       currentlyInfectedSevereImpact = int(data['reportedCases'] * 50)
