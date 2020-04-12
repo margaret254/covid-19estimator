@@ -32,7 +32,7 @@ def estimator(data):
         "data":data,
         "impact":{
           "currentlyInfected": currentlyInfectedImpact,
-          "infectionsByRequestedTime": currentlyInfectedImpact * (2 ** (int(days / 3))),
+          "infectionsByRequestedTime": infectionRequestTimeImpact,,
           "severeCasesByRequestedTime": severeCaseRequestTimeImpact,
           "hospitalBedsByRequestedTime": bedsRequestedTimeImpact,
           "casesForICUByRequestedTime": casesForICUByRequestedTimeImpact,
@@ -41,7 +41,7 @@ def estimator(data):
         },
         "severeImpact":{
           "currentlyInfected": currentlyInfectedSevereImpact,
-          "infectionsByRequestedTime": currentlyInfectedSevereImpact * (2 ** (int(days / 3))),
+          "infectionsByRequestedTime": infectionRequestTimeSevereImpact,
           "severeCasesByRequestedTime": severeCaseRequestTimeSevereImpact,
           "hospitalBedsByRequestedTime": bedsRequestedTimeSevereImpact,
           "casesForICUByRequestedTime": casesForICUByRequestedTimeSevereImpact,
