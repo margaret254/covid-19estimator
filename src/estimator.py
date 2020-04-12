@@ -32,7 +32,7 @@ def estimator(data):
         "data":data,
         "impact":{
           "currentlyInfected": currentlyInfectedImpact,
-          "infectionsByRequestedTime": infectionRequestTimeImpact,,
+          "infectionsByRequestedTime": infectionRequestTimeImpact,
           "severeCasesByRequestedTime": severeCaseRequestTimeImpact,
           "hospitalBedsByRequestedTime": bedsRequestedTimeImpact,
           "casesForICUByRequestedTime": casesForICUByRequestedTimeImpact,
