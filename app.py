@@ -54,7 +54,7 @@ def covid_19_xml():
 
 @app.after_request
 def log_request_info(response):
-    response_time = int((time.time() - g.start) * 1000)
+    response_time = int((time.time() - g.start_time) * 1000)
     status_code = response.status.split()[0]
     logging.info(
     f"{request.method}\t\t{request.path}\t\t{status_code}\t\t{str(response_time).zfill(2)}ms\n"
