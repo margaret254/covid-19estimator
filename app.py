@@ -16,7 +16,7 @@ logging.basicConfig(filename='logs.txt', level=logging.INFO)
 
 @app.before_request
 def get_time():
-g.start_time = time.time() 
+    g.start_time = time.time() 
 
 @app.route('/api/v1/on-covid-19/logs', methods=['GET'])
 def logs():
