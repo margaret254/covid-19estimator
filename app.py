@@ -7,7 +7,7 @@ import time
 import os
 
 if "logs.txt" in os.listdir():
-os.remove("logs.txt") 
+    os.remove("logs.txt") 
 
 # Init
 app = Flask(__name__)
@@ -61,7 +61,7 @@ def log_request_info(response):
     )
 
     return response 
-# run serverclear
+# run server
 if __name__ == '__main__':
     app.run(debug=True)
     
