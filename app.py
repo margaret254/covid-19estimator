@@ -22,10 +22,10 @@ def get_time():
 def logs():
     data_logs = [] 
     with open("logs.txt", "rt") as f: # read logs file 
-    data = f.readlines()
+        data = f.readlines()
     for line in data:
-    if "root" in line and "404" not in line:
-    data_logs.append(line[10:])
+        if "root" in line and "404" not in line:
+            data_logs.append(line[10:])
 
     return Response("".join(data_logs), mimetype="text/plain") 
 
