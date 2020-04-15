@@ -32,8 +32,8 @@ def logs():
 
 
 
-@app.route('/api/v1/on-covid-19/', methods=['POST'])
-@app.route('/api/v1/on-covid-19/json', methods=['POST'])
+@app.route('/api/v1/on-covid-19/', methods=['POST','GET'])
+@app.route('/api/v1/on-covid-19/json', methods=['POST','GET'])
 def covid():
     request_data = request.get_json() 
     data = estimator(request_data)
@@ -42,7 +42,7 @@ def covid():
     response.headers['Location'] = ("/api/v1/on-covid-19/json")
     return response 
 
-@app.route('/api/v1/on-covid-19/xml', methods=['POST'])
+@app.route('/api/v1/on-covid-19/xml', methods=['POST','GET'])
 def covid_19_xml():
     request_data = request.get_json()
     data = estimator(request_data)
