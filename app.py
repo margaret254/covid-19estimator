@@ -18,57 +18,46 @@ logging.basicConfig(filename='logs.txt', level=logging.INFO)
 def get_time():
     g.start_time = time.time() 
 
-@app.route('/api/v1/on-covid-19/logs', methods=['GET'])
+@app.route('/api/v1/on-covid-19/logs', methods=['GET', 'POST'])
 def logs():
-    data_logs = [] 
-    with open("logs.txt", "rt") as f: # read logs file 
+    logs = []  
+    with open("logs.txt", "rt") as f:   # read logs file 
         data = f.readlines()
     for line in data:
         if "root" in line and "404" not in line:
-            data_logs.append(line[10:])
+            logs.append(line[10:])
 
-    return Response("".join(data_logs), mimetype="text/plain") 
-
-
+    return Response("".join(logs), mimetype="text/plain")
 
 
-@app.route('/api/v1/on-covid-19/', methods=['POST','GET'])
-@app.route('/api/v1/on-covid-19/json', methods=['POST','GET'])
+
+
+@app.route('/api/v1/on-covid-19/', methods=['POST', 'GET'])
+@app.route('/api/v1/on-covid-19/json', methods=['POST', 'GET'])
 def covid():
-    # request_data = request.get_json() 
-    # data = estimator(request_data)
-
-    # response = Response(json.dumps(data), 200, mimetype='application/json')
-    # response.headers['Location'] = ("/api/v1/on-covid-19/json")
-    # return response 
-    if request.method == 'GET':
-        res = Response("",content_type="application/json")
-        return res,200
+    if request.method == "GET":
+        res = Response("", content_type="application/json")
+        return res, 200
 
     if request.method == "POST":
         data = request.get_json()
         output = estimator(data)
-        return jsonify(output),200
+        return jsonify(output), 200
 
-@app.route('/api/v1/on-covid-19/xml', methods=['POST','GET'])
+@app.route('/api/v1/on-covid-19/xml', methods=['POST', 'GET'])
 def covid_19_xml():
-    # request_data = request.get_json()
-    # data = estimator(request_data)
-
-    # res = Response(dicttoxml(data, attr_type=False), status=200, content_type="application/xml")
-    # res.headers['Location'] = ("/api/v1/on-covid-19/xml")
-    # return res 
-
     if request.method == "GET":
-        res = Response("",content_type="application/xml")
-        return res,200
+        res = Response("", content_type="application/xml")
+        return res, 200
 
     if request.method == "POST":
         data = request.get_json()
         output = estimator(data)
         res = \
-            Response(dicttoxml(output,attr_type=False),content_type="application/xml")
-            return res,200
+            Response(dicttoxml(
+                output, attr_type=False),
+                content_type="application/xml")
+        return res, 200
 
 @app.after_request
 def log_request_info(response):
