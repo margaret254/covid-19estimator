@@ -21,7 +21,7 @@ def get_time():
 @app.route('/api/v1/on-covid-19/logs', methods=['GET', 'POST'])
 def logs():
     logs = []  
-    with open("logs.txt", "rt") as f:   # read logs file 
+    with open("logs.txt", "rt") as f:   
         data = f.readlines()
     for line in data:
         if "root" in line and "404" not in line:
@@ -68,7 +68,7 @@ def log_request_info(response):
     )
 
     return response 
-# run server
+
 if __name__ == '__main__':
     app.run(debug=True)
     
