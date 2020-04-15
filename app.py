@@ -18,7 +18,7 @@ logging.basicConfig(filename='logs.txt', level=logging.INFO)
 def get_time():
     g.start_time = time.time() 
 
-@app.route('/api/v1/on-covid-19/logs', methods=['GET'])
+@app.route('/api/v1/on-covid-19/logs', methods=['GET','POST'])
 def logs():
     data_logs = [] 
     with open("logs.txt", "rt") as f: # read logs file 
